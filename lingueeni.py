@@ -1,7 +1,17 @@
-from flask import Flask
+from fastapi.middleware.cors import CORSMiddleware
+from linguee_api import api
 
-app = Flask(__name__)
+app = api.app
 
-@app.route('/')
-def hello_world():
-    return { "one": "two" }
+origins = [
+    "http://localhost:4200",
+    "https://sbwhitt.github.io"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
