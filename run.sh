@@ -1,3 +1,3 @@
 #!/bin/bash
 
-uvicorn lingueeni:app --host $(python getip.py)
+uvicorn lingueeni:app --host 0.0.0.0
